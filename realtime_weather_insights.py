@@ -1,5 +1,6 @@
 import sys
 import requests
+import creds
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QPushButton, QVBoxLayout
 from PyQt5.QtCore import Qt
 
@@ -75,9 +76,9 @@ class WeatherApp(QWidget):
         self.get_weather_button.clicked.connect(self.get_weather)
         
     def get_weather(self):
-        api_key="e094a3c9cb4d8f6e31a0d3ff96dc38a5"
+        
         city= self.city_Input.text()
-        url=f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}"
+        url=f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={creds.api_key}"
 
         try:
             response = requests.get(url)
